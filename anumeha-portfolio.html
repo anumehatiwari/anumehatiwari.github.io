@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anumeha Tiwari — RN | DHA Eligible</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --beige:#F2EBE0;--beige2:#FAF6F0;--beige3:#EDE3D5;
+  --plum:#5C2D52;--plum2:#7A3D6E;--plum3:#3A1B34;
+  --gold:#C9A96E;--gold2:#E2C98A;--gold3:#A88040;
+  --ink:#1A1218;--muted:#7A6A72;--white:#FEFCF9;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--beige);color:var(--ink);overflow-x:hidden;cursor:none}
+
+/* CURSOR */
+.cursor{position:fixed;width:10px;height:10px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:multiply;transition:transform 0.1s}
+.cursor-ring{position:fixed;width:36px;height:36px;border:1px solid var(--plum);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all 0.18s ease;mix-blend-mode:multiply}
+
+/* LOADER */
+.loader{position:fixed;inset:0;background:var(--plum3);z-index:9000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.5rem;transition:opacity 0.7s ease,visibility 0.7s ease}
+.loader.hidden{opacity:0;visibility:hidden}
+.loader-name{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:var(--white);letter-spacing:0.15em;opacity:0;animation:fadeUp 0.8s 0.3s forwards}
+.loader-bar{width:200px;height:1px;background:rgba(255,255,255,0.15);position:relative;overflow:hidden}
+.loader-bar::after{content:'';position:absolute;left:0;top:0;height:100%;width:0;background:var(--gold);animation:loadBar 1.8s 0.5s ease forwards}
+.loader-sub{font-size:0.65rem;letter-spacing:0.35em;text-transform:uppercase;color:rgba(255,255,255,0.4);opacity:0;animation:fadeUp 0.6s 0.6s forwards}
+@keyframes loadBar{to{width:100%}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:1.4rem 5rem;display:flex;justify-content:space-between;align-items:center;transition:all 0.4s}
+nav.scrolled{background:rgba(242,235,224,0.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(201,169,110,0.25);padding:1rem 5rem}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--plum3)}
+.nav-links{display:flex;gap:2.8rem;list-style:none}
+.nav-links a{text-decoration:none;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);font-weight:400;position:relative;transition:color 0.3s}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--gold);transition:width 0.3s}
+.nav-links a:hover{color:var(--plum)}.nav-links a:hover::after{width:100%}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:55% 45%;position:relative;overflow:hidden}
+.hero-bg-left{position:absolute;left:0;top:0;width:55%;height:100%;background:var(--plum3);z-index:0}
+.hero-bg-left::after{content:'';position:absolute;right:-1px;top:0;bottom:0;width:80px;background:var(--plum3);clip-path:polygon(0 0,100% 10%,100% 90%,0 100%)}
+.particles{position:absolute;inset:0;pointer-events:none;z-index:1}
+.particle{position:absolute;width:2px;height:2px;background:var(--gold);border-radius:50%;opacity:0;animation:floatP var(--dur) var(--delay) infinite ease-in-out}
+@keyframes floatP{0%,100%{opacity:0;transform:translateY(0)}20%{opacity:0.6}50%{opacity:0.3;transform:translateY(-60px)}80%{opacity:0.1}}
+.hero-left{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:9rem 4rem 6rem 7rem}
+.hero-eyebrow{font-size:0.65rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold2);margin-bottom:2rem;opacity:0;animation:fadeUp 0.7s 2.4s forwards;display:flex;align-items:center;gap:0.8rem}
+.hero-eyebrow::before{content:'';width:30px;height:1px;background:var(--gold)}
+.hero-name{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,5.5vw,5rem);font-weight:300;color:var(--white);line-height:1;margin-bottom:0.4rem}
+.hero-name-line{display:block;opacity:0;transform:translateY(60px);animation:slideUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards}
+.l1{animation-delay:2.5s}.l2{animation-delay:2.65s;font-style:italic;color:var(--gold2)}
+@keyframes slideUp{to{opacity:1;transform:translateY(0)}}
+.hero-role{font-size:0.78rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(254,252,249,0.5);margin:1.2rem 0 2.5rem;opacity:0;animation:fadeUp 0.6s 2.9s forwards;font-weight:300}
+.dha-seal{display:inline-flex;align-items:center;gap:0.8rem;opacity:0;animation:fadeUp 0.6s 3.1s forwards;margin-bottom:3.5rem}
+.dha-inner{background:var(--gold);padding:0.65rem 1.5rem;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--plum3);font-weight:500;display:flex;align-items:center;gap:0.5rem}
+.dha-inner::before{content:'✦';font-size:0.55rem}
+.dha-pulse{width:8px;height:8px;background:var(--gold2);border-radius:50%;position:relative;flex-shrink:0}
+.dha-pulse::after{content:'';position:absolute;inset:-4px;border:1px solid var(--gold2);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(2.5)}}
+.hero-cta-row{display:flex;gap:1rem;opacity:0;animation:fadeUp 0.6s 3.3s forwards}
+.btn-p{display:inline-flex;align-items:center;gap:0.6rem;background:var(--gold);color:var(--plum3);padding:0.85rem 2rem;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;text-decoration:none;transition:all 0.3s;position:relative;overflow:hidden}
+.btn-p::before{content:'';position:absolute;left:-100%;top:0;width:100%;height:100%;background:var(--gold2);transition:left 0.35s ease;z-index:0}
+.btn-p:hover::before{left:0}.btn-p:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(92,45,82,0.3)}
+.btn-p span{position:relative;z-index:1}
+.btn-o{display:inline-flex;align-items:center;gap:0.6rem;border:1px solid rgba(201,169,110,0.4);color:rgba(254,252,249,0.7);padding:0.85rem 2rem;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:300;text-decoration:none;transition:all 0.3s}
+.btn-o:hover{border-color:var(--gold);color:var(--gold)}
+.hero-right{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:9rem 5rem 6rem 6rem;background:var(--beige2)}
+.hero-stats-wrap{opacity:0;animation:fadeUp 0.8s 2.8s forwards}
+.stat-row{display:flex;flex-direction:column}
+.stat-item{padding:1.8rem 0;border-bottom:1px solid var(--beige3);display:flex;align-items:center;gap:2rem;cursor:default;transition:padding-left 0.3s}
+.stat-item:hover{padding-left:0.8rem}.stat-item:last-child{border-bottom:none}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:var(--plum);line-height:1;min-width:90px}
+.stat-lbl{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold3);margin-bottom:0.2rem;font-weight:400}
+.stat-desc{font-size:0.82rem;color:var(--muted);font-weight:300}
+.hero-loc{margin-top:2.5rem;padding:1.2rem 1.5rem;border:1px solid var(--beige3);display:flex;align-items:center;gap:1rem;opacity:0;animation:fadeUp 0.6s 3s forwards}
+.loc-dot{width:8px;height:8px;background:#4CAF50;border-radius:50%;flex-shrink:0;box-shadow:0 0 0 3px rgba(76,175,80,0.2);animation:pulse 2s infinite}
+.loc-txt{font-size:0.75rem;color:var(--muted);font-weight:300}
+.loc-txt strong{color:var(--ink);font-weight:400;font-size:0.82rem;display:block}
+
+/* ECG */
+.ecg-bar{background:var(--plum3);padding:0.8rem 0;overflow:hidden}
+.ecg-track{display:flex;animation:scrollECG 8s linear infinite}
+.ecg-unit{flex-shrink:0;width:200px;height:36px}
+@keyframes scrollECG{from{transform:translateX(0)}to{transform:translateX(-200px)}}
+
+/* SECTIONS */
+section{padding:7rem 0}
+.container{max-width:1140px;margin:0 auto;padding:0 5rem}
+.sec-lbl{font-size:0.62rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--gold3);margin-bottom:0.6rem;font-weight:400}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,3.5vw,3rem);font-weight:300;color:var(--ink);line-height:1.15;margin-bottom:4rem}
+.sec-title em{font-style:italic;color:var(--plum)}
+.g-rule{width:50px;height:1px;background:var(--gold);margin-bottom:0.8rem}
+
+/* ABOUT */
+.about{background:var(--white)}
+.about-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:7rem;align-items:start}
+.about-quote{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-style:italic;font-weight:300;color:var(--plum3);line-height:1.75;margin-bottom:2.5rem;padding-left:1.5rem;border-left:2px solid var(--gold)}
+.about-body{font-size:0.92rem;color:var(--muted);line-height:2;font-weight:300}
+.about-body p+p{margin-top:1rem}
+.gem-block{margin-top:3rem;padding:1.8rem 2rem;background:var(--beige);border-left:3px solid var(--gold);display:flex;gap:1.2rem;align-items:flex-start;transition:transform 0.3s,box-shadow 0.3s}
+.gem-block:hover{transform:translateX(6px);box-shadow:4px 0 20px rgba(92,45,82,0.08)}
+.gem-icon{font-size:1.5rem;flex-shrink:0}
+.gem-t{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--plum3);margin-bottom:0.2rem}
+.gem-s{font-size:0.7rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;line-height:1.6}
+
+/* CREDS */
+.creds{background:var(--beige)}
+.creds-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.cred-card{background:var(--white);padding:2.2rem;border:1px solid transparent;transition:all 0.4s cubic-bezier(0.16,1,0.3,1);position:relative;overflow:hidden;cursor:default}
+.cred-card::before{content:'';position:absolute;bottom:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--plum),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform 0.4s}
+.cred-card:hover{border-color:var(--beige3);transform:translateY(-6px);box-shadow:0 20px 50px rgba(92,45,82,0.1)}
+.cred-card:hover::before{transform:scaleX(1)}
+.cred-ico{font-size:1.6rem;margin-bottom:1rem;display:block}
+.cred-check{position:absolute;top:1.2rem;right:1.2rem;background:var(--plum);color:var(--gold2);width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.6rem}
+.cred-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--plum3);margin-bottom:0.5rem;line-height:1.3}
+.cred-det{font-size:0.72rem;color:var(--muted);line-height:1.7;font-weight:300}
+
+/* EXPERIENCE */
+.exp-sec{background:var(--plum3)}
+.exp-sec .sec-lbl{color:var(--gold2)}
+.exp-sec .sec-title{color:var(--white)}
+.exp-sec .sec-title em{color:var(--gold2)}
+.exp-sec .g-rule{background:var(--gold)}
+.timeline{position:relative;padding-left:3rem}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--gold),transparent)}
+.tl-dot{position:absolute;left:-3.25rem;top:0.5rem;width:12px;height:12px;background:var(--gold);border-radius:50%;border:3px solid var(--plum3);box-shadow:0 0 0 4px rgba(201,169,110,0.2);animation:dotP 3s infinite}
+@keyframes dotP{0%,100%{box-shadow:0 0 0 4px rgba(201,169,110,0.2)}50%{box-shadow:0 0 0 9px rgba(201,169,110,0.07)}}
+.tl-period{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem}
+.tl-role{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:600;color:var(--white);margin-bottom:0.2rem;line-height:1.2}
+.tl-org{font-size:0.78rem;color:rgba(254,252,249,0.5);margin-bottom:1.8rem;letter-spacing:0.05em}
+.tl-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0.8rem 2rem}
+.tl-list li{font-size:0.85rem;color:rgba(254,252,249,0.7);padding-left:1.2rem;position:relative;line-height:1.6;font-weight:300}
+.tl-list li::before{content:'';position:absolute;left:0;top:0.65em;width:5px;height:1px;background:var(--gold)}
+
+/* SKILLS */
+.skills-sec{background:var(--beige2)}
+.skills-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem}
+.sgrp{margin-bottom:2.5rem}
+.sgrp-title{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--plum3);margin-bottom:1rem}
+.tags{display:flex;flex-wrap:wrap;gap:0.5rem}
+.tag{font-size:0.7rem;letter-spacing:0.06em;color:var(--ink);border:1px solid var(--beige3);padding:0.38rem 0.85rem;background:var(--white);font-weight:300;cursor:default;transition:all 0.25s;position:relative;overflow:hidden}
+.tag::before{content:'';position:absolute;inset:0;background:var(--plum);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;z-index:0}
+.tag s{position:relative;z-index:1;transition:color 0.3s;text-decoration:none}
+.tag:hover::before{transform:scaleX(1)}.tag:hover s{color:var(--white)}.tag:hover{border-color:var(--plum)}
+.skill-bars{display:flex;flex-direction:column;gap:1.4rem;margin-top:0.5rem}
+.sb-item{display:flex;flex-direction:column;gap:0.5rem}
+.sb-label{display:flex;justify-content:space-between;font-size:0.72rem;color:var(--muted);font-weight:300}
+.sb-track{height:2px;background:var(--beige3);position:relative;overflow:hidden}
+.sb-fill{height:100%;background:linear-gradient(90deg,var(--plum),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform 1.4s cubic-bezier(0.16,1,0.3,1)}
+.sb-fill.go{transform:scaleX(1)}
+
+/* EDUCATION */
+.edu-sec{background:var(--white)}
+.edu-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.edu-card{padding:2.2rem;border:1px solid var(--beige3);position:relative;overflow:hidden;cursor:default;transition:border-color 0.3s}
+.edu-card::after{content:'';position:absolute;inset:0;background:var(--plum3);transform:translateY(100%);transition:transform 0.5s cubic-bezier(0.16,1,0.3,1);z-index:0}
+.edu-card:hover::after{transform:translateY(0)}.edu-card:hover{border-color:var(--plum3)}
+.edu-inner{position:relative;z-index:1}
+.edu-yr{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:var(--gold);display:block;margin-bottom:0.8rem;transition:color 0.3s}
+.edu-deg{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--plum3);margin-bottom:0.4rem;line-height:1.3;transition:color 0.3s}
+.edu-ins{font-size:0.7rem;color:var(--muted);line-height:1.7;font-weight:300;transition:color 0.3s}
+.edu-card:hover .edu-yr{color:var(--gold2)}.edu-card:hover .edu-deg{color:var(--white)}.edu-card:hover .edu-ins{color:rgba(254,252,249,0.6)}
+
+/* CONTACT */
+.contact-sec{background:var(--beige)}
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:7rem;align-items:center}
+.contact-headline{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;font-style:italic;color:var(--plum3);line-height:1.7;margin-bottom:2.5rem}
+.cta-btn{display:inline-flex;align-items:center;gap:0.8rem;background:var(--plum3);color:var(--gold2);padding:1.1rem 2.5rem;font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;font-weight:400;text-decoration:none;transition:all 0.4s;position:relative;overflow:hidden}
+.cta-btn::before{content:'';position:absolute;inset:0;background:var(--plum2);transform:scaleX(0);transform-origin:left;transition:transform 0.4s;z-index:0}
+.cta-btn:hover::before{transform:scaleX(1)}.cta-btn:hover{box-shadow:0 16px 40px rgba(58,27,52,0.25);transform:translateY(-3px)}
+.cta-btn span{position:relative;z-index:1}
+.c-items{display:flex;flex-direction:column;gap:1rem}
+.c-item{display:flex;align-items:center;gap:1.2rem;padding:1.2rem 1.5rem;background:var(--white);border:1px solid var(--beige3);transition:all 0.3s;cursor:default}
+.c-item:hover{border-color:var(--gold);transform:translateX(6px)}
+.c-ico{width:38px;height:38px;background:var(--beige);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.c-txt strong{display:block;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold3);font-weight:400;margin-bottom:0.15rem}
+.c-txt span{font-size:0.82rem;color:var(--muted);font-weight:300}
+
+/* FOOTER */
+footer{background:var(--plum3);padding:2.5rem 5rem;display:flex;justify-content:space-between;align-items:center}
+.f-logo{font-family:'Cormorant Garamond',serif;font-size:0.95rem;color:rgba(254,252,249,0.5);letter-spacing:0.12em}
+.f-note{font-size:0.62rem;color:rgba(254,252,249,0.25);letter-spacing:0.18em;text-transform:uppercase}
+
+/* SCROLL REVEAL */
+.sr{opacity:0;transform:translateY(30px);transition:opacity 0.8s ease,transform 0.8s cubic-bezier(0.16,1,0.3,1)}
+.sr.l{transform:translateX(-30px)}.sr.r{transform:translateX(30px)}
+.sr.in{opacity:1;transform:translate(0)}
+.d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}.d4{transition-delay:0.4s}.d5{transition-delay:0.5s}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .hero-bg-left{width:100%;height:60%}
+  .hero-left,.hero-right{padding:5rem 2rem 3rem}
+  nav{padding:1rem 1.5rem}.nav-links{gap:1.5rem}
+  .container{padding:0 1.8rem}
+  .about-grid,.contact-layout,.skills-layout{grid-template-columns:1fr;gap:3rem}
+  .creds-grid,.edu-cards{grid-template-columns:1fr 1fr}
+  .tl-list{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curRing"></div>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-name">Anumeha Tiwari</div>
+  <div class="loader-bar"></div>
+  <div class="loader-sub">Registered Nurse &nbsp;·&nbsp; DHA Eligible</div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">A. Tiwari</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#creds">Credentials</a></li>
+    <li><a href="#exp">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-left"></div>
+  <div class="particles" id="ptcls"></div>
+  <div class="hero-left">
+    <div class="hero-eyebrow">Registered Nurse &nbsp;·&nbsp; UAE Based &nbsp;·&nbsp; Immediate Hire</div>
+    <h1 class="hero-name">
+      <span class="hero-name-line l1">Anumeha</span>
+      <span class="hero-name-line l2">Tiwari</span>
+    </h1>
+    <p class="hero-role">Medical Surgical &nbsp;·&nbsp; Oncology Specialist &nbsp;·&nbsp; Palliative Care</p>
+    <div class="dha-seal">
+      <div class="dha-inner">DHA Eligible — Dubai Health Authority</div>
+      <div class="dha-pulse"></div>
+    </div>
+    <div class="hero-cta-row">
+      <a href="mailto:tiwarianumeha@gmail.com" class="btn-p"><span>✦ &nbsp; Hire Me Now</span></a>
+      <a href="#exp" class="btn-o">View Experience</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stats-wrap">
+      <div class="stat-row">
+        <div class="stat-item">
+          <div class="stat-num">~2</div>
+          <div><div class="stat-lbl">Years of Experience</div><div class="stat-desc">High-acuity tertiary care, Delhi</div></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">DHA</div>
+          <div><div class="stat-lbl">Dubai Health Authority</div><div class="stat-desc">Eligibility letter — ready to practise</div></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">BLS</div>
+          <div><div class="stat-lbl">Life Support Certified</div><div class="stat-desc">Emergency response trained</div></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">GEM</div>
+          <div><div class="stat-lbl">Award for Excellence</div><div class="stat-desc">Max Super Speciality Hospital</div></div>
+        </div>
+      </div>
+      <div class="hero-loc">
+        <div class="loc-dot"></div>
+        <div class="loc-txt"><strong>Bur Dubai, UAE</strong>Available for immediate joining — no visa delay</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ECG BAR -->
+<div class="ecg-bar"><div class="ecg-track" id="ecgTrack"></div></div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <div class="sec-lbl sr d1">Who I Am</div>
+        <div class="g-rule sr d2"></div>
+        <h2 class="sec-title sr d3">Dedicated to <em>exceptional</em> patient care</h2>
+        <div class="gem-block sr d4">
+          <div class="gem-icon">🏆</div>
+          <div>
+            <div class="gem-t">GEM Award Recipient</div>
+            <div class="gem-s">Max Super Speciality Hospital, Patparganj<br>Outstanding performance & clinical excellence</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="about-quote sr l">"Compassionate, precise, and committed — bringing world-class nursing standards to every patient interaction."</p>
+        <div class="about-body sr d2">
+          <p>I am a Registered Nurse and Midwife with nearly two years of clinical experience in a high-acuity Medical Surgical unit at Max Super Speciality Hospital, New Delhi — one of India's leading tertiary care institutions.</p>
+          <p>My specialisation spans oncology nursing, breast surgery recovery, and chemotherapy administration support. I hold a valid DHA Eligibility Letter and am currently based in Bur Dubai, ready to join immediately with zero relocation delay.</p>
+          <p>I thrive in multidisciplinary environments and am committed to the standard of care that the UAE's top hospitals are globally renowned for.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section class="creds" id="creds">
+  <div class="container">
+    <div class="sec-lbl sr">Licensure & Certifications</div>
+    <div class="g-rule sr"></div>
+    <h2 class="sec-title sr">Fully <em>verified</em> — ready to practise</h2>
+    <div class="creds-grid">
+      <div class="cred-card sr d1"><div class="cred-check">✓</div><span class="cred-ico">🏛️</span><div class="cred-name">DHA Eligibility Letter</div><div class="cred-det">Dubai Health Authority<br>Authorised to practise across Dubai, UAE</div></div>
+      <div class="cred-card sr d2"><div class="cred-check">✓</div><span class="cred-ico">📋</span><div class="cred-name">Registered Nurse & Midwife</div><div class="cred-det">Delhi Nursing Council<br>Reg. No: 105026</div></div>
+      <div class="cred-card sr d3"><div class="cred-check">✓</div><span class="cred-ico">❤️</span><div class="cred-name">Basic Life Support (BLS)</div><div class="cred-det">AHA-standard certification<br>Emergency response ready</div></div>
+      <div class="cred-card sr d4"><div class="cred-check">✓</div><span class="cred-ico">🛂</span><div class="cred-name">Valid Passport</div><div class="cred-det">Expires: 07 August 2033<br>Immediate visa processing possible</div></div>
+      <div class="cred-card sr d5"><div class="cred-check">✓</div><span class="cred-ico">📍</span><div class="cred-name">UAE Resident</div><div class="cred-det">Currently in Bur Dubai<br>No relocation wait — join immediately</div></div>
+      <div class="cred-card sr d1"><div class="cred-check">✓</div><span class="cred-ico">🎖️</span><div class="cred-name">GEM Award</div><div class="cred-det">Max Super Speciality Hospital<br>Outstanding performance & dedication</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="exp-sec" id="exp">
+  <div class="container">
+    <div class="sec-lbl sr">Work History</div>
+    <div class="g-rule sr"></div>
+    <h2 class="sec-title sr">Clinical <em>experience</em></h2>
+    <div class="timeline">
+      <div style="position:relative" class="sr">
+        <div class="tl-dot"></div>
+        <div class="tl-period">June 2024 — February 2026</div>
+        <div class="tl-role">Staff Nurse — Medical Surgical Ward</div>
+        <div class="tl-org">Max Super Speciality Hospital, Patparganj &nbsp;·&nbsp; Delhi, India</div>
+        <ul class="tl-list">
+          <li>High-quality care for medical, surgical & oncology patients in tertiary care</li>
+          <li>Chemotherapy administration & adverse reaction monitoring</li>
+          <li>Pre & post-operative care for breast surgery patients</li>
+          <li>Medications per strict "5-rights" safety protocol & sterile dressings</li>
+          <li>Tracheostomy care, suctioning & NG tube management</li>
+          <li>Rigorous clinical documentation for quality compliance</li>
+          <li>Collaboration with oncologists & multidisciplinary teams</li>
+          <li>IPC compliance & holistic palliative care delivery</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-sec" id="skills">
+  <div class="container">
+    <div class="sec-lbl sr">Competencies</div>
+    <div class="g-rule sr"></div>
+    <h2 class="sec-title sr">Clinical <em>skills</em></h2>
+    <div class="skills-layout">
+      <div>
+        <div class="sgrp sr">
+          <div class="sgrp-title">Oncology & Surgical Care</div>
+          <div class="tags">
+            <div class="tag"><s>Oncology Nursing</s></div>
+            <div class="tag"><s>Breast Care Support</s></div>
+            <div class="tag"><s>Chemotherapy Protocols</s></div>
+            <div class="tag"><s>Pre-operative Nursing</s></div>
+            <div class="tag"><s>Post-operative Nursing</s></div>
+            <div class="tag"><s>Palliative Care</s></div>
+            <div class="tag"><s>IPC Compliance</s></div>
+          </div>
+        </div>
+        <div class="sgrp sr d2">
+          <div class="sgrp-title">Advanced Clinical Procedures</div>
+          <div class="tags">
+            <div class="tag"><s>IV Cannulation</s></div>
+            <div class="tag"><s>Aseptic Wound Care</s></div>
+            <div class="tag"><s>Tracheostomy Care</s></div>
+            <div class="tag"><s>Suctioning</s></div>
+            <div class="tag"><s>NG Tube Insertion</s></div>
+            <div class="tag"><s>Catheterisation (M/F)</s></div>
+            <div class="tag"><s>ECG Monitoring</s></div>
+            <div class="tag"><s>Blood Transfusion</s></div>
+          </div>
+        </div>
+      </div>
+      <div class="sr d2">
+        <div class="sgrp-title" style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--plum3);margin-bottom:1.5rem">Clinical Proficiency</div>
+        <div class="skill-bars" id="skillBars">
+          <div class="sb-item"><div class="sb-label"><span>Oncology & Breast Care</span><span>95%</span></div><div class="sb-track"><div class="sb-fill" data-w="0.95"></div></div></div>
+          <div class="sb-item"><div class="sb-label"><span>Pre/Post-operative Nursing</span><span>92%</span></div><div class="sb-track"><div class="sb-fill" data-w="0.92"></div></div></div>
+          <div class="sb-item"><div class="sb-label"><span>Chemotherapy Safety</span><span>90%</span></div><div class="sb-track"><div class="sb-fill" data-w="0.90"></div></div></div>
+          <div class="sb-item"><div class="sb-label"><span>IV & Medication Management</span><span>95%</span></div><div class="sb-track"><div class="sb-fill" data-w="0.95"></div></div></div>
+          <div class="sb-item"><div class="sb-label"><span>Critical Procedures</span><span>88%</span></div><div class="sb-track"><div class="sb-fill" data-w="0.88"></div></div></div>
+          <div class="sb-item"><div class="sb-label"><span>Clinical Documentation</span><span>93%</span></div><div class="sb-track"><div class="sb-fill" data-w="0.93"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="edu-sec" id="edu">
+  <div class="container">
+    <div class="sec-lbl sr">Academic Background</div>
+    <div class="g-rule sr"></div>
+    <h2 class="sec-title sr">Education & <em>training</em></h2>
+    <div class="edu-cards">
+      <div class="edu-card sr d1"><div class="edu-inner"><span class="edu-yr">2024</span><div class="edu-deg">B.Sc Nursing</div><div class="edu-ins">College of Nursing, Kasturba Hospital<br>Guru Gobind Singh Indraprastha University<br>Delhi, India</div></div></div>
+      <div class="edu-card sr d2"><div class="edu-inner"><span class="edu-yr">2018</span><div class="edu-deg">Senior Secondary</div><div class="edu-ins">Hillwoods Academy<br>Delhi, India</div></div></div>
+      <div class="edu-card sr d3"><div class="edu-inner"><span class="edu-yr">2016</span><div class="edu-deg">High School</div><div class="edu-ins">Mayo International School<br>Delhi, India</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-sec" id="contact">
+  <div class="container">
+    <div class="sec-lbl sr">Get In Touch</div>
+    <div class="g-rule sr"></div>
+    <h2 class="sec-title sr">Ready to <em>join</em> your team</h2>
+    <div class="contact-layout">
+      <div class="sr l">
+        <p class="contact-headline">"Open to roles at leading hospitals and healthcare institutions across the UAE — available to start without delay."</p>
+        <a href="mailto:tiwarianumeha@gmail.com" class="cta-btn"><span>✦ &nbsp; Reach Out — Hire Me</span></a>
+      </div>
+      <div class="c-items sr r">
+        <div class="c-item"><div class="c-ico">✉</div><div class="c-txt"><strong>Email</strong><span>tiwarianumeha@gmail.com</span></div></div>
+        <div class="c-item"><div class="c-ico">📞</div><div class="c-txt"><strong>UAE Mobile</strong><span>+971 50 502 3496</span></div></div>
+        <div class="c-item"><div class="c-ico">📱</div><div class="c-txt"><strong>India Mobile</strong><span>+91 966 707 6770</span></div></div>
+        <div class="c-item"><div class="c-ico">📍</div><div class="c-txt"><strong>Location</strong><span>Bur Dubai, United Arab Emirates</span></div></div>
+        <div class="c-item"><div class="c-ico">🏛</div><div class="c-txt"><strong>DHA Status</strong><span>Eligible — authorised to practise in Dubai</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">Anumeha Tiwari &nbsp;—&nbsp; Registered Nurse</div>
+  <div class="f-note">DHA Eligible &nbsp;·&nbsp; Bur Dubai, UAE &nbsp;·&nbsp; Immediate Joining</div>
+</footer>
+
+<script>
+// CURSOR
+const cur=document.getElementById('cur'),ring=document.getElementById('curRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function animR(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animR)})();
+document.querySelectorAll('a,.cred-card,.edu-card,.c-item,.stat-item,.tag,.gem-block,.btn-p,.btn-o,.cta-btn').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ring.style.transform='translate(-50%,-50%) scale(1.8)';ring.style.borderColor='var(--gold)'});
+  el.addEventListener('mouseleave',()=>{ring.style.transform='translate(-50%,-50%) scale(1)';ring.style.borderColor='var(--plum)'});
+});
+
+// LOADER
+setTimeout(()=>document.getElementById('loader').classList.add('hidden'),2300);
+
+// NAV
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>60));
+
+// PARTICLES
+const pw=document.getElementById('ptcls');
+for(let i=0;i<28;i++){const p=document.createElement('div');p.className='particle';p.style.cssText=`left:${Math.random()*52}%;top:${Math.random()*100}%;--dur:${4+Math.random()*6}s;--delay:${Math.random()*5}s`;pw.appendChild(p)}
+
+// ECG
+const tr=document.getElementById('ecgTrack');
+const ecgD='M0,18 L20,18 L28,18 L32,4 L36,32 L40,6 L44,18 L60,18 L80,18 L88,18 L92,4 L96,32 L100,6 L104,18 L120,18 L140,18 L148,18 L152,4 L156,32 L160,6 L164,18 L180,18 L200,18';
+for(let i=0;i<20;i++){const s=document.createElementNS('http://www.w3.org/2000/svg','svg');s.setAttribute('viewBox','0 0 200 36');s.setAttribute('width','200');s.setAttribute('height','36');s.classList.add('ecg-unit');const p=document.createElementNS('http://www.w3.org/2000/svg','path');p.setAttribute('d',ecgD);p.setAttribute('stroke','#C9A96E');p.setAttribute('stroke-width','1.5');p.setAttribute('fill','none');s.appendChild(p);tr.appendChild(s)}
+
+// SCROLL REVEAL
+const obs=new IntersectionObserver(ents=>{ents.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:0.12});
+document.querySelectorAll('.sr').forEach(el=>obs.observe(el));
+
+// SKILL BARS
+const barObs=new IntersectionObserver(ents=>{
+  ents.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.sb-fill').forEach((b,i)=>{
+        setTimeout(()=>{b.style.transform=`scaleX(${b.dataset.w})`;},i*180);
+      });
+      barObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.3});
+const sb=document.getElementById('skillBars');
+if(sb)barObs.observe(sb);
+
+// SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})});
+});
+</script>
+</body>
+</html>
